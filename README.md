@@ -1,12 +1,14 @@
 # Twilio Flex - Routing - Redirect Calls When No Agents Are Available
 
-Solution to fulfill redirecting voice calls to an E.164 number when no agents, across all task queues, accepted the incoming call. This repository features a terraform template that creates new independent Twilio resources required to demostrate the solution.
+This repository provides a solution for redirecting incoming voice calls to an E.164 number when no agents across all task queues have accepted the call.
+
+The solution utilizes Terraform to create independent Twilio resources required to demonstrate the call redirection functionality. It ensures that when no agents are available to handle an incoming call in any task queue, the call will be automatically redirected to a specified E.164 number.
 
 ![Twilio Flex - Routing - Redirect Calls When No Agents Are Available](docs/solution_diagram.png)
 
 Key Solution Components:
 
-1. _Placeholder Task Queue_: Inserted at the last step of a TaskRouter Workflow to indicate that the call is ready to be routed to a E.164 number. No workers should be matched to this Task Queue.
+1. _Placeholder Task Queue_: Inserted at the last step of a TaskRouter Workflow to indicate that the call is ready to be routed to an E.164 number. No workers should be matched to this Task Queue.
 2. _TaskRouter Event Callback Handler_: Responsible for detecting tasks that entered the placeholder task queue and redirect the in-progress call, via TwiML's `<Dial>` verb, to an E.164 number
 
 ---
